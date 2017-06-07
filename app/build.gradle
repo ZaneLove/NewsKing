@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "io.github.zane.newsking"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs =
+                [
+                    'src/main/res/layouts',
+                    'src/main/res',
+                    'src/main/res/layouts/find',
+                    'src/main/res/layouts/attention',
+                    'src/main/res/layouts/mine',
+                    'src/main/res/layouts/setting',
+                    'src/main/res/layouts/home',
+                    'src/main/res/layouts/common',
+                    'src/main/res/layouts/track',
+                    'src/main/res/layouts/news',
+                    'src/main/res/layouts/video',
+                    'src/main/res/layouts/music'
+                ]
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support.constraint:constraint-layout:1.0.0'
+    testCompile 'junit:junit:4.12'
+    compile project(':photopicker')
+    compile project(':videomodel')
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    compile files('libs/open_sdk_r5788.jar')
+    compile files('libs/libammsdk.jar')
+}
